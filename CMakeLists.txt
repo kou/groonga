@@ -576,6 +576,15 @@ macro(grn_prepare_fetchcontent)
   set(CMAKE_COMPILE_WARNING_AS_ERROR FALSE)
   set(CMAKE_EXPORT_NO_PACKAGE_REGISTRY TRUE)
   set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
+  if(NOT GRN_ALLOW_WARNING)
+    if(GRN_C_COMPILER_GNU_LIKE)
+      string(APPEND CMAKE_C_FLAGS " -Werror")
+      string(APPEND CMAKE_CXX_FLAGS " -Werror")
+    elseif(MSVC)
+      string(APPEND CMAKE_C_FLAGS " /WX")
+      string(APPEND CMAKE_CXX_FLAGS " /WX")
+    endif()
+  endif()
 endmacro()
 
 include(ExternalProject)
@@ -1483,6 +1492,12 @@ if(NOT "${GRN_WITH_H3}" STREQUAL "no")
         URL ${H3_SOURCE_URL}
         URL_HASH "SHA256=${GRN_H3_BUNDLED_SHA256}")
       grn_prepare_fetchcontent()
+      if(MSVC)
+        # 'operation' : different 'modifier' qualifiers
+        # https://learn.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-1-c4090
+        string(APPEND CMAKE_C_FLAGS " /wd4090")
+        string(APPEND CMAKE_CXX_FLAGS " /wd4090")
+      endif()
       set(BUILD_BENCHMARKS OFF)
       set(BUILD_FILTERS OFF)
       set(BUILD_FUZZERS OFF)
@@ -1552,6 +1567,16 @@ if(NOT "${GRN_WITH_LLAMA_CPP}" STREQUAL "no")
         URL ${LLAMA_CPP_SOURCE_URL}
         URL_HASH "SHA256=${GRN_LLAMA_CPP_BUNDLED_SHA256}")
       grn_prepare_fetchcontent()
+      if(MSVC)
+        # 'identifier' : macro redefinition
+        # https://learn.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-1-c4005
+        string(APPEND CMAKE_C_FLAGS " /wd4005")
+        string(APPEND CMAKE_CXX_FLAGS " /wd4005")
+        # 'argument' : conversion from 'type1' to 'type2', possible loss of data
+        # https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-2-c4244
+        string(APPEND CMAKE_C_FLAGS " /wd4244")
+        string(APPEND CMAKE_CXX_FLAGS " /wd4244")
+      endif()
       set(BUILD_SHARED_LIBS ON)
       set(BUILD_STATIC_LIBS OFF)
       set(GGML_BACKEND_DL ON)

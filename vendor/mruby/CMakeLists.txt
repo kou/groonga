@@ -1,5 +1,5 @@
 # Copyright (C) 2013-2018  Brazil
-# Copyright (C) 2019-2024  Sutou Kouhei <kou@clear-code.com>
+# Copyright (C) 2019-2025  Sutou Kouhei <kou@clear-code.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -126,12 +126,18 @@ if(GRN_WITH_MRUBY)
     # 'token' : signed/unsigned mismatch
     # https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-3-c4018
     set(MRUBY_C_COMPILE_FLAGS "${MRUBY_C_COMPILE_FLAGS} /wd4018")
+    # formal parameter 'number' different from declaration
+    # https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-1-c4028
+    set(MRUBY_C_COMPILE_FLAGS "${MRUBY_C_COMPILE_FLAGS} /wd4028")
     # 'argument' : conversion from 'type1' to 'type2', possible loss of data
     # https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-2-c4244
     set(MRUBY_C_COMPILE_FLAGS "${MRUBY_C_COMPILE_FLAGS} /wd4244")
     # 'var' : conversion from 'size_t' to 'type', possible loss of data
     # https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-3-c4267
     set(MRUBY_C_COMPILE_FLAGS "${MRUBY_C_COMPILE_FLAGS} /wd4267")
+    # 'function' : inconsistent DLL linkage
+    # https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-1-c4273
+    set(MRUBY_C_COMPILE_FLAGS "${MRUBY_C_COMPILE_FLAGS} /wd4273")
     # Your code uses a function, class member, variable, or typedef
     # that's marked deprecated.
     # https://docs.microsoft.com/en-us/cpp/error-messages/compiler-warnings/compiler-warning-level-3-c4996

@@ -214,6 +214,13 @@ jobs:
             benchmark-http-apache-arrow.json | \
               jq '{"context": .context, "benchmarks": .benchmarks | flatten}' | \
                 tee benchmark.json
+      - name: Prepare gh-pages branch
+        if: github.event_name == 'push'
+        run: |
+          if ! git fetch origin gh-pages; then
+            git switch --orphan gh-pages
+            git push origin gh-pages:gh-pages
+          fi
       - name: Store benchmark result
         uses: benchmark-action/github-action-benchmark@v1
         with:

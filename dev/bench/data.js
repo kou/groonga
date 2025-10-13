@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1760356890484,
+  "lastUpdate": 1760362839683,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -918,6 +918,108 @@ window.BENCHMARK_DATA = {
             "value": 0.026387159999899268,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0018479999999990726 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "ed81010735b7c6c6154bac0e649b142e0dcfe982",
+          "message": "Add more macros for compressed value",
+          "timestamp": "2025-10-13T22:34:31+09:00",
+          "tree_id": "915bc48ba124732d5f6a7c9ef7804ffe7630b9d2",
+          "url": "https://github.com/kou/groonga/commit/ed81010735b7c6c6154bac0e649b142e0dcfe982"
+        },
+        "date": 1760362838653,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.3468675480000343,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01182800000000006 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.26491970699999,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.010832999999999898 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.016049355999939507,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003720000000000806 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.013194911000027787,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003399999999996739 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.6823027140000022,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00016399999999983095 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.21231794900006662,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007361999999999966 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.11920093999998471,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005551000000000028 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.01697672099993497,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014420000000003874 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.014629416000047968,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014539999999994835 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.0694255400000543,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007063999999999834 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06429757299991934,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008844000000000685 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.01788788100009242,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013199999999997658 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.028243699999904948,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015210000000000085 s\nthreads: undefined"
           }
         ]
       }

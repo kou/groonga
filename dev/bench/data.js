@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1761100848790,
+  "lastUpdate": 1761102527055,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -6120,6 +6120,108 @@ window.BENCHMARK_DATA = {
             "value": 0.017426250000028176,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0015879999999999228 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "7a0772e3e58baff9701c50fd54df6506003a2cf0",
+          "message": "Add support for RaBitQ based ANN search\n\nThis is an experimental feature. API and DB schema may be changed.\n\nThis is implemented as `language_model/knn` plugin but its name may be\nchanged.\n\nThis requires Faiss 1.12.0 or later.\n\nOR works but AND doesn't work.\n\nWe need to improve performance.\n\nWe'll add custom sorter later.",
+          "timestamp": "2025-10-22T11:43:15+09:00",
+          "tree_id": "8e5763385a4d60969858f946f6a95a85b9280c39",
+          "url": "https://github.com/kou/groonga/commit/7a0772e3e58baff9701c50fd54df6506003a2cf0"
+        },
+        "date": 1761102526360,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.4034089809999841,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.02256700000000006 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2683035630000177,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.012493000000000393 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.014901909999935015,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00033399999999958463 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.015109987999835539,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003549999999999942 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.4751935720000802,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00018599999999985295 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.24728248099995653,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007578999999999836 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.14028526099980354,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006394999999999457 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.01722893900011968,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014869999999999883 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.016624520999926062,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014879999999997118 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.07030406600006245,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00771700000000014 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.07280698300007771,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00736300000000123 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.017268702999899688,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014630000000010468 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.02306427500002428,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014850000000006247 s\nthreads: undefined"
           }
         ]
       }

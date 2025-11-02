@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1762092793847,
+  "lastUpdate": 1762099341485,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -13464,6 +13464,108 @@ window.BENCHMARK_DATA = {
             "value": 0.025991768000039883,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0015159999999996288 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "376a30a9b1c0ad9df4b8d95f7253f0adf89723de",
+          "message": "language-model: add support for prefix\n\nSome models such as multilingual-e5 require prefix for search target\ntexts and query texts. This adds support for these cases.\n\n`passage_prefix` is for prefix for search target text.\n`query_prefix` is for prefix for query text.\n\n    TokenLanguageModelKNN(\"model\", \"hf:///groonga/multilingual-e5-base-Q4_K_M-GGUF\", \\\n                          \"code_column\", \"rabitq_code\", \\\n                          \"passage_prefix\", \"passage: \", \\\n                          \"query_prefix\", \"query: \")\n\nTODO: Add support for prefix in `language_model_vectorize()` applier.",
+          "timestamp": "2025-11-03T00:46:41+09:00",
+          "tree_id": "c8b4fb5be5fefe7cab98819158b8660f9280e7d8",
+          "url": "https://github.com/kou/groonga/commit/376a30a9b1c0ad9df4b8d95f7253f0adf89723de"
+        },
+        "date": 1762099340252,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.34823430099999086,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01531299999999991 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.26302058999999645,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01294400000000015 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.01588506400003098,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003900000000002235 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.015315813999961847,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003880000000003325 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.6269581340000059,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00019000000000010675 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.2274780660000033,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007114000000000065 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.13606552100003455,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006374999999999964 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.01689946199996939,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014450000000002239 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.01660988300000099,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001708000000000237 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06217648199987025,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008071999999999663 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06587805200024377,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007859000000000588 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.017268613999931404,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015220000000002176 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.02146847799997431,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001728000000000257 s\nthreads: undefined"
           }
         ]
       }

@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1763618463594,
+  "lastUpdate": 1763646681048,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -16218,6 +16218,108 @@ window.BENCHMARK_DATA = {
             "value": 0.022070911000128035,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0015750000000000486 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "7996a6d4a7d407bf18447701f011ffbf60b63752",
+          "message": "TokenLanguageModelKNN: add \"centroid_column\" option\n\nIt's for large (1025+ dimensions == 4100+ bytes) embeddings. Groonga's\ntable key must be less or equal than 4KiB. If an embedding is larger\nthan 4KiB, we can't store the embedding as table key.\n\nYou can use this option for the case. You can store embeddings to\ncolumn value not table key. So you can use larger embeddings.",
+          "timestamp": "2025-11-20T22:47:27+09:00",
+          "tree_id": "d8c5e716b54308e79f083882b93727085a887d06",
+          "url": "https://github.com/kou/groonga/commit/7996a6d4a7d407bf18447701f011ffbf60b63752"
+        },
+        "date": 1763646680036,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.35442871000000764,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.017069000000000084 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2755298510000159,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01699699999999993 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.015067058999989058,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00034300000000020425 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.023930350000000544,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.000378000000000267 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.4521144530000072,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00014499999999997848 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.22362966700003994,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008155999999999913 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.1294357170000353,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005638999999999755 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.016824679999984937,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016340000000001076 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.016540429000002632,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013370000000001436 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06089796799994929,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006238000000000396 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06427683499998693,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006276000000000059 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.017582816000043522,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014689999999993042 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.017380311000039228,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016969999999998653 s\nthreads: undefined"
           }
         ]
       }

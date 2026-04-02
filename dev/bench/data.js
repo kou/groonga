@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1774502833109,
+  "lastUpdate": 1775109479799,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -26316,6 +26316,108 @@ window.BENCHMARK_DATA = {
             "value": 0.017698963000043477,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0016069999999999973 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "49699333+dependabot[bot]@users.noreply.github.com",
+            "name": "dependabot[bot]",
+            "username": "dependabot[bot]"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "a8942a17eca251fab7304328ef6f10d46799bb4e",
+          "message": "ci: bump actions/deploy-pages from 4 to 5 (#2778)\n\nBumps [actions/deploy-pages](https://github.com/actions/deploy-pages)\nfrom 4 to 5.\n<details>\n<summary>Release notes</summary>\n<p><em>Sourced from <a\nhref=\"https://github.com/actions/deploy-pages/releases\">actions/deploy-pages's\nreleases</a>.</em></p>\n<blockquote>\n<h2>v5.0.0</h2>\n<h1>Changelog</h1>\n<ul>\n<li>Update Node.js version to 24.x <a\nhref=\"https://github.com/salmanmkc\"><code>@​salmanmkc</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/404\">#404</a>)</li>\n<li>Add workflow file for publishing releases to immutable action\npackage <a\nhref=\"https://github.com/Jcambass\"><code>@​Jcambass</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/374\">#374</a>)</li>\n<li>Bump braces from 3.0.2 to 3.0.3 in the npm_and_yarn group across 1\ndirectory <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/360\">#360</a>)</li>\n<li>Make the rebuild dist workflow work nicer with Dependabot <a\nhref=\"https://github.com/yoannchaudet\"><code>@​yoannchaudet</code></a>\n(<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/361\">#361</a>)</li>\n<li>Bump the non-breaking-changes group across 1 directory with 3\nupdates <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/358\">#358</a>)</li>\n<li>Delete repeated sentence <a\nhref=\"https://github.com/garethsb\"><code>@​garethsb</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/359\">#359</a>)</li>\n<li>Update README.md <a\nhref=\"https://github.com/tsusdere\"><code>@​tsusdere</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/348\">#348</a>)</li>\n<li>Bump the non-breaking-changes group with 4 updates <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/341\">#341</a>)</li>\n<li>Remove error message for file permissions <a\nhref=\"https://github.com/TooManyBees\"><code>@​TooManyBees</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/340\">#340</a>)</li>\n</ul>\n<hr />\n<p>See details of <a\nhref=\"https://github.com/actions/deploy-pages/compare/v4.0.5...v4.0.6\">all\ncode changes</a> since previous release.</p>\n<p>:warning: For use with products other than GitHub.com, such as GitHub\nEnterprise Server, please consult the <a\nhref=\"https://github.com/actions/deploy-pages/#compatibility\">compatibility\ntable</a>.</p>\n<h2>v4.0.5</h2>\n<h1>Changelog</h1>\n<ul>\n<li>On API error, the error message will surface the API request ID <a\nhref=\"https://github.com/TooManyBees\"><code>@​TooManyBees</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/324\">#324</a>)</li>\n<li>Bump the non-breaking-changes group with 2 updates <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/318\">#318</a>)</li>\n<li>Bump the non-breaking-changes group with 1 update <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/316\">#316</a>)</li>\n<li>Bump the non-breaking-changes group with 3 updates <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/314\">#314</a>)</li>\n<li>Bump release-drafter/release-drafter from 5.25.0 to 6.0.0 <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/311\">#311</a>)</li>\n</ul>\n<hr />\n<p>See details of <a\nhref=\"https://github.com/actions/deploy-pages/compare/v4.0.4...v4.0.5\">all\ncode changes</a> since previous release.</p>\n<p>:warning: For use with products other than GitHub.com, such as GitHub\nEnterprise Server, please consult the <a\nhref=\"https://github.com/actions/deploy-pages/#compatibility\">compatibility\ntable</a>.</p>\n<h2>v4.0.4</h2>\n<h1>Changelog</h1>\n<ul>\n<li>Update api-client.js <a\nhref=\"https://github.com/lmammino\"><code>@​lmammino</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/295\">#295</a>)</li>\n<li>fix typo: compatibilty -&gt; compatibility <a\nhref=\"https://github.com/SimonSiefke\"><code>@​SimonSiefke</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/298\">#298</a>)</li>\n<li>Bump <code>@​actions/artifact</code> from 2.0.1 to 2.1.1 <a\nhref=\"https://github.com/dependabot\"><code>@​dependabot</code></a> (<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/310\">#310</a>)</li>\n<li>Update Dependabot config to group non-breaking changes <a\nhref=\"https://github.com/JamesMGreene\"><code>@​JamesMGreene</code></a>\n(<a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/307\">#307</a>)</li>\n</ul>\n<hr />\n<p>See details of <a\nhref=\"https://github.com/actions/deploy-pages/compare/v4.0.3...v4.0.4\">all\ncode changes</a> since previous release.</p>\n<p>:warning: For use with products other than GitHub.com, such as GitHub\nEnterprise Server, please consult the <a\nhref=\"https://github.com/actions/deploy-pages/#compatibility\">compatibility\ntable</a>.</p>\n<h2>v4.0.3</h2>\n<h1>Changelog</h1>\n<!-- raw HTML omitted -->\n</blockquote>\n<p>... (truncated)</p>\n</details>\n<details>\n<summary>Commits</summary>\n<ul>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/cd2ce8fcbc39b97be8ca5fce6e763baed58fa128\"><code>cd2ce8f</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/404\">#404</a>\nfrom salmanmkc/node24</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/bbe2a950ee52d4f5cbe74e6d9d6a8803676e91d5\"><code>bbe2a95</code></a>\nUpdate Node.js version to 24.x</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/854d7aa1b99e4509c4d1b53d69b7ba4eaf39215a\"><code>854d7aa</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/374\">#374</a>\nfrom actions/Jcambass-patch-1</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/306bb814f29679fd12f0e4b0014bc1f3a7e7f4bc\"><code>306bb81</code></a>\nAdd workflow file for publishing releases to immutable action\npackage</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/b74272834adc04f971da4b0b055c49fa8d7f90c9\"><code>b742728</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/360\">#360</a>\nfrom actions/dependabot/npm_and_yarn/npm_and_yarn-513...</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/72732942c639e67ea3f70165fd2e012dd6d95027\"><code>7273294</code></a>\nBump braces in the npm_and_yarn group across 1 directory</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/963791f01c40ef3eff219c255dbfb97a6f2c9f87\"><code>963791f</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/361\">#361</a>\nfrom actions/dependabot-friendly</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/51bb29d9d7bfe15d731c4957ce1887b5ae8c6727\"><code>51bb29d</code></a>\nMake the rebuild dist workflow safer for Dependabot</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/89f3d10406f57ee86e6517a982b3fb0438bd6dc5\"><code>89f3d10</code></a>\nMerge pull request <a\nhref=\"https://redirect.github.com/actions/deploy-pages/issues/358\">#358</a>\nfrom actions/dependabot/npm_and_yarn/non-breaking-cha...</li>\n<li><a\nhref=\"https://github.com/actions/deploy-pages/commit/bce735589bbbfa569f1d2ac003277b590d743e4c\"><code>bce7355</code></a>\nMerge branch 'main' into\ndependabot/npm_and_yarn/non-breaking-changes-99c12deb21</li>\n<li>Additional commits viewable in <a\nhref=\"https://github.com/actions/deploy-pages/compare/v4...v5\">compare\nview</a></li>\n</ul>\n</details>\n<br />\n\n\n[![Dependabot compatibility\nscore](https://dependabot-badges.githubapp.com/badges/compatibility_score?dependency-name=actions/deploy-pages&package-manager=github_actions&previous-version=4&new-version=5)](https://docs.github.com/en/github/managing-security-vulnerabilities/about-dependabot-security-updates#about-compatibility-scores)\n\nDependabot will resolve any conflicts with this PR as long as you don't\nalter it yourself. You can also trigger a rebase manually by commenting\n`@dependabot rebase`.\n\n[//]: # (dependabot-automerge-start)\n[//]: # (dependabot-automerge-end)\n\n---\n\n<details>\n<summary>Dependabot commands and options</summary>\n<br />\n\nYou can trigger Dependabot actions by commenting on this PR:\n- `@dependabot rebase` will rebase this PR\n- `@dependabot recreate` will recreate this PR, overwriting any edits\nthat have been made to it\n- `@dependabot show <dependency name> ignore conditions` will show all\nof the ignore conditions of the specified dependency\n- `@dependabot ignore this major version` will close this PR and stop\nDependabot creating any more for this major version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this minor version` will close this PR and stop\nDependabot creating any more for this minor version (unless you reopen\nthe PR or upgrade to it yourself)\n- `@dependabot ignore this dependency` will close this PR and stop\nDependabot creating any more for this dependency (unless you reopen the\nPR or upgrade to it yourself)\n\n\n</details>\n\nSigned-off-by: dependabot[bot] <support@github.com>\nCo-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>",
+          "timestamp": "2026-03-31T09:07:58+09:00",
+          "tree_id": "cfbb62f828b0d6e6325c340f678a8f155f4dd87c",
+          "url": "https://github.com/kou/groonga/commit/a8942a17eca251fab7304328ef6f10d46799bb4e"
+        },
+        "date": 1775109478964,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.38077233100011654,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.013457999999999831 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2864994630001547,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.014235999999999943 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.015327460999856157,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00038800000000005497 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.024583244999917042,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0004339999999998234 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.4592712639999945,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00013099999999999223 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.25290093999990404,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005819000000000074 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.14647339500015732,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005178999999999684 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.016814613000065037,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015010000000001411 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.01656434699998499,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013900000000003077 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.0667716930000779,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00619900000000001 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06842941400009295,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006528999999999757 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.01695560600023782,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017290000000001193 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.025989011999854483,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017679999999998253 s\nthreads: undefined"
           }
         ]
       }

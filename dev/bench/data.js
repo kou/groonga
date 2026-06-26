@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782285123682,
+  "lastUpdate": 1782462471493,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -31008,6 +31008,108 @@ window.BENCHMARK_DATA = {
             "value": 0.027199843999994755,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0015350000000000363 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "11d93d5f3ba8bcf61d9b01045e951e1d9abb8aec",
+          "message": "between: add support for vector only in sequential search\n\nIf the target value is a vector (each element may be a different type)\nor an uvector (all elements are fixed sized and the same type),\n`between()` returns `true` if any of elements is included in the\nspecified range.\n\nIf the target value is an vector, the first element's type is the\ntarget value type. Elements that don't use the target value type are\nignored.\n\nFor example, `1` in `[1.0, 1]` is ignored because the target type (the\ntype of the first element (`1.0`)) is float. `1.0` in `[1, 1.0]` is\nignored.\n\nVector/uvector support isn't implemented for index search yet.",
+          "timestamp": "2026-06-26T17:19:52+09:00",
+          "tree_id": "17df7d4f8f7c926980d79f08f83902b232464ae7",
+          "url": "https://github.com/kou/groonga/commit/11d93d5f3ba8bcf61d9b01045e951e1d9abb8aec"
+        },
+        "date": 1782462470432,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.3436088749999726,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.009302999999999853 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2616296590000218,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008862000000000272 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.016266169999994418,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00045900000000015373 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.013652105999995001,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00041199999999957937 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.9086368419999928,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00019300000000012363 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.21902275199997234,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007726999999999984 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.12396997499996587,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007427000000000072 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.017614170999991074,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014380000000000226 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.01682406700001593,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0018719999999993603 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06983422500002234,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006781999999999622 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.05959572599999774,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008101999999999693 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.01737443499996516,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015609999999997987 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.015356398000022864,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013919999999998378 s\nthreads: undefined"
           }
         ]
       }

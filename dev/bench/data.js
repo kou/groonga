@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1782721839586,
+  "lastUpdate": 1784067114922,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -32436,6 +32436,108 @@ window.BENCHMARK_DATA = {
             "value": 0.02593992099997422,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0021629999999998872 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "134317971+correctmost@users.noreply.github.com",
+            "name": "correctmost",
+            "username": "correctmost"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "10dce508d5dc76b23c3da4a565bdf36f45e0dc26",
+          "message": "benchmark: Remove incorrect G_GNUC_CONST usage (#2858)\n\nGitHub: Fix GH-2857\n\n`bench_reporter_get_type` has global side effects, which makes it\nineligible for the `G_GNUC_CONST` compiler attribute.\n\nSee https://gitlab.gnome.org/GNOME/glib/-/commit/016829559 for further\ninformation about how incorrect usage can lead to issues with\ndevelopment versions of GCC.\n\nSee also:\n* https://gitlab.gnome.org/GNOME/glib/-/merge_requests/5223\n* https://gitlab.gnome.org/GNOME/glib/-/work_items/3984",
+          "timestamp": "2026-07-14T10:34:44+09:00",
+          "tree_id": "2072cfc2d423a0b4b450fb48a0465e4149b9c790",
+          "url": "https://github.com/kou/groonga/commit/10dce508d5dc76b23c3da4a565bdf36f45e0dc26"
+        },
+        "date": 1784067113937,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.34275776699990956,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008865999999999832 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.24879990100009763,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006342999999999738 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.014910292999957164,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00034700000000009723 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.013028105999978834,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00037400000000012423 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.5802771929999722,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00036099999999991694 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.2138476089999699,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005835999999999952 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.12082722899998544,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005011000000000224 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.016161393000118096,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013590000000001101 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.01421528900004887,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0011570000000002134 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06734699700001556,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006200000000000233 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.05573622500003239,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006905000000000092 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.024777913999969314,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015859999999997126 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.030700605000106407,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015780000000000377 s\nthreads: undefined"
           }
         ]
       }

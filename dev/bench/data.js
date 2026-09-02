@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788339308156,
+  "lastUpdate": 1788348695188,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -33864,6 +33864,108 @@ window.BENCHMARK_DATA = {
             "value": 0.023786798999992698,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0016530000000008482 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "023191989aec725c149c7bb5bb2f3496b734b1cb",
+          "message": "mruby: update to near latest mruby\n\nmruby 4.0.0 has some problems: `protected` is broken and large integer\nliteral is parsed as bigint not int64.\n\nSo this update to near latest mruby. I want to use the latest mruby\nbut it has a Regexp related\nproblem. https://github.com/mruby/mruby/pull/7281 introduced new API\nfor Regexp related special variables such as `$&`. It uses `__XXX`\nmethods for them. mruby-onig-regexp doesn't support it yet. So I used\nhttps://github.com/mruby/mruby/commit/524586c3e that is the previous\ncommit of https://github.com/mruby/mruby/pull/7281.\n\nhttps://github.com/mattn/mruby-onig-regexp/pull/133 is a patch for\nit. We can use the latest mruby with the patch.\n\nThis stopped support for custom memory allocator for debug because\n`mrb_open_allocf()` was removed in mruby 4.0.0. mruby 4.0.0 introduced\n`mrb_basic_alloc_func` but it seems that it's a difficult to use\nbecause we need to override the symbol.\n\nThis needed to adjust mruby-compiler API change. The latest mruby uses\nPrism as the parser backend. `mrb_parser_parse()` doesn't accept\n`FILE` now. So we need to use `mrb_ccontext` and `mrb_parse_file()`\ninstead.\n\n`mrb_protect_error()` related change is required because mruby 4.0.0\nor later doesn't set `jmpbuf` automatically for\n`mrb_yield_with_class()`. If we don't use `mrb_protect_error()`,\nGroonga crashes with a mruby level exception without\n`mrb_protect_error()`.\n\nThis removed vendored mruby-dir/mruby-env/mruby-errno because they are\nmoved to mruby core.\n\nThis removed the patch in MSYS2 CI because its already merged in\nmruby.",
+          "timestamp": "2026-09-02T20:22:56+09:00",
+          "tree_id": "40554167398aa52c3df2f6d0e7d7816957a8333a",
+          "url": "https://github.com/kou/groonga/commit/023191989aec725c149c7bb5bb2f3496b734b1cb"
+        },
+        "date": 1788348694110,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.35858776199995646,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.013327999999999868 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2762685659999988,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.010504999999999737 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.015242188999991413,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0005000000000000004 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.015228011000090191,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00044600000000005746 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.5668041060000064,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00017600000000000948 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.21792390300004172,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006254000000000037 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.1546991680001497,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006444000000000172 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.016153830000064318,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016169999999999796 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.017014795999955368,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001614999999999922 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.058787648000020454,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006888999999999729 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.059632496000006086,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007623999999999326 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.020366498000043975,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0018030000000006374 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.024379138000028888,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002304999999999585 s\nthreads: undefined"
           }
         ]
       }

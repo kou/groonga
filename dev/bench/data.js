@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788394746688,
+  "lastUpdate": 1788397949841,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -34476,6 +34476,108 @@ window.BENCHMARK_DATA = {
             "value": 0.01927332299999307,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.001524999999999263 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "9c7e920a747f8ac6f044dace424fc1430847bf1b",
+          "message": "mruby: update to the latest mruby\n\nmruby 4.0.0 has some problems: `protected` is broken and large integer\nliteral is parsed as bigint not int64.\n\nSo this update to the latest mruby.\n\nThis stopped support for custom memory allocator for debug because\n`mrb_open_allocf()` was removed in mruby 4.0.0. mruby 4.0.0 introduced\n`mrb_basic_alloc_func` but it seems that it's a difficult to use\nbecause we need to override the symbol.\n\nThis needed to adjust mruby-compiler API change. The latest mruby uses\nPrism as the parser backend. `mrb_parser_parse()` doesn't accept\n`FILE` now. So we need to use `mrb_ccontext` and `mrb_parse_file()`\ninstead.\n\n`mrb_protect_error()` related change is required because mruby 4.0.0\nor later doesn't set `jmpbuf` automatically for\n`mrb_yield_with_class()`. If we don't use `mrb_protect_error()`,\nGroonga crashes with a mruby level exception without\n`mrb_protect_error()`.\n\nThis removed vendored mruby-dir/mruby-env/mruby-errno because they are\nmoved to mruby core.\n\nThis removed the patch in MSYS2 CI because its already merged in\nmruby.",
+          "timestamp": "2026-09-03T10:08:31+09:00",
+          "tree_id": "96ccb6846eb97662f55be8f166c0f0b020417ef4",
+          "url": "https://github.com/kou/groonga/commit/9c7e920a747f8ac6f044dace424fc1430847bf1b"
+        },
+        "date": 1788397948926,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.2866266110000879,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.010520000000000099 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2188026660000446,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.009748999999999924 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.011872660999983964,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00035200000000021325 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.011917305999986638,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0002709999999999102 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.4959512120000227,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.0003660000000000885 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.18068349999998645,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005612000000000145 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.11586671999998543,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0046570000000001055 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.012405392000005122,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0012930000000001413 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.013134212999943884,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0012940000000001284 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.04647293400012131,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005592000000000083 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.04806516600007171,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006500000000000061 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.016500666000013098,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013260000000006045 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.019808462999947096,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016429999999997558 s\nthreads: undefined"
           }
         ]
       }

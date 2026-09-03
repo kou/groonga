@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788439394297,
+  "lastUpdate": 1788467799271,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -36210,6 +36210,108 @@ window.BENCHMARK_DATA = {
             "value": 0.0274384160001091,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0018639999999991996 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "577f95ca7359249af62877baf8955780fe8da682",
+          "message": "mrb: add `Groonga::ChildContext` and `Groonga::ChildObject`\n\n`Groonga::ChildContext` pulls a child `grn_ctx` and initializes its\nmruby.  `Groonga::ChildObject` is a proxy for a value in the child's\nmruby. We can load code in the child's mruby by\n`Groonga::ChildContext#require`, get an object in the child's mruby by\n`Groonga::ChildContext#[]` and call a method of the object\ntransparently via `Groonga::ChildObject`.\n\nAll accesses to the child's mruby are serialized by a per context\nmutex. This is a preparation for executing a forwarded method call as\na `grn::TaskExecutor` task on a worker thread. In this version all\ncalls are run on the caller's thread.\n\n`Groonga::TaskExecutor#execute` runs the given block with a dedicated\n`Groonga::ChildContext`.\n\nCo-Authored-By: Claude Fable 5 <noreply@anthropic.com>",
+          "timestamp": "2026-09-04T05:28:08+09:00",
+          "tree_id": "b53118fa34306a2996c54863120e42ac4ada3117",
+          "url": "https://github.com/kou/groonga/commit/577f95ca7359249af62877baf8955780fe8da682"
+        },
+        "date": 1788467797918,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.3849801880000996,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01619199999999997 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2699765739999975,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.011533999999999753 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.016442440999981045,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00045999999999990493 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.016337163000002874,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0004919999999997982 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.3938298099999429,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00017400000000017402 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.2438137420001567,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0070269999999998944 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.1392297410000083,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005314000000000069 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.017599334999886196,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017300000000001203 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.017554249999875537,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001418999999999837 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06011534999993273,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006163000000000418 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06313515200008624,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006020000000000525 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.025679331999981514,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017980000000000773 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.0303322490001392,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00169200000000011 s\nthreads: undefined"
           }
         ]
       }

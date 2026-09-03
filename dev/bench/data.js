@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788401353598,
+  "lastUpdate": 1788406027469,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -34680,6 +34680,108 @@ window.BENCHMARK_DATA = {
             "value": 0.027578887000117902,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.002297000000000271 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "3904fd4021b88bced8fcb3b6a1e52787238e13ce",
+          "message": "Add support for Lemon (SQLite) 3.52.0 or later\n\nThis drops support for Lemon < 3.52.0. I want to add auto version\ndetection but Lemon doesn't provide version information. So new\n`GRN_USE_LEMON` CMake option is added. Developers should enable it\nexplicitly.",
+          "timestamp": "2026-09-03T12:11:05+09:00",
+          "tree_id": "7610a6d075df71389a15d2150a61b079a8d067d1",
+          "url": "https://github.com/kou/groonga/commit/3904fd4021b88bced8fcb3b6a1e52787238e13ce"
+        },
+        "date": 1788406026474,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.3202812819997689,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.011879000000000028 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.25510943800020414,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.011494000000000004 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.01447980200020993,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003860000000000252 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.014249696000206313,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003269999999999107 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.6014793529999451,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00020200000000011875 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.19807133099982366,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006690999999999961 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.12912157800019486,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006029000000000229 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.014701952999985224,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014510000000000078 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.015381065999918064,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014380000000000226 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.05198809499984236,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007024000000000086 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.05681501499987007,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008949000000000235 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.021158666999895104,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017230000000002799 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.01700048199984394,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017079999999998208 s\nthreads: undefined"
           }
         ]
       }

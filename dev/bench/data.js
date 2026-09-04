@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788502846256,
+  "lastUpdate": 1788505296202,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -37026,6 +37026,108 @@ window.BENCHMARK_DATA = {
             "value": 0.02523361499982002,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.002330999999999417 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "f6cf21c07d1cbf510fb87adf7e488a056ceba57a",
+          "message": "mrb: add Groonga::TaskExecutor#execute\n\n`Groonga::TaskExecutor#execute(id, tag, *arguments, &block)` evaluates\nthe given block in a child `grn_ctx` as a `grn::TaskExecutor` task.\n`#wait_all` waits all tasks and returns `{id => result, ...}`.\n\nEach `grn_ctx` has its own `mrb_state` and mruby isn't thread safe. So\nnothing in the caller's `mrb_state` is shared with the child's\n`mrb_state`:\n\n  * The block is serialized to bytecode by `mrb_dump_irep()` in the\n    caller's `mrb_state` and deserialized by `mrb_load_irep_buf_cxt()`\n    in the child's `mrb_state`. The block is evaluated at the top\n    level of the child's `mrb_state` without its environment. So local\n    variables outside the block are `nil` in the block and lexical\n    scopes such as enclosing modules aren't reproduced. Constants must\n    be fully qualified. `require` can be used in the block.\n  * Arguments and the result of the block are copied via\n    `grn::mrb::DetachedValue`. Only nil, true, false, Integer, Float,\n    Symbol, String, Array and Hash can be used. Temporary Groonga\n    objects can be passed by ID because temporary objects created in\n    a child `grn_ctx` are registered to the root `grn_ctx`.\n\nA worker thread pulls a child `grn_ctx`, evaluates the block in it and\nreleases the child `grn_ctx`. So the number of child `grn_ctx`s that\nare used at the same time doesn't exceed the number of workers. An\nerror in a task is propagated to the caller's `grn_ctx` by\n`grn_ctx_release_child()` and raised by `#wait_all`.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-09-04T14:46:48+09:00",
+          "tree_id": "2a6095c07499a588578a84425d15e25a751a6fa8",
+          "url": "https://github.com/kou/groonga/commit/f6cf21c07d1cbf510fb87adf7e488a056ceba57a"
+        },
+        "date": 1788505294941,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.36766138699996986,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.013669999999999835 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.28248930499998437,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.015635000000000066 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.016171820999971942,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00048200000000009346 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.01579042000000186,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003370000000004758 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.4731967490000102,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00034999999999990594 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.23323931800007358,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006095000000000045 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.13310970099993824,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0061149999999997595 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.01751958499997386,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016750000000003151 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.016958513000020048,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013940000000006447 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06485905999988972,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006294000000000272 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06005823099991403,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007769999999999833 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.024385656000106337,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0020609999999999518 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.03162710499998411,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002028000000000335 s\nthreads: undefined"
           }
         ]
       }

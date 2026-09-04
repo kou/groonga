@@ -469,24 +469,21 @@ namespace {
     return mrb_nil_value();
   }
 
-  /* Convert the result of the task to a value in the caller's mruby
-   * and remove the task. The task must be finished. */
-  mrb_value
-  take_result(mrb_state *mrb, TaskExecutorData *data, uintptr_t id)
-  {
-    auto it = data->tasks.find(id);
-    if (it == data->tasks.end()) {
-      return mrb_nil_value();
-    }
-    auto result = it->second->result.to_mrb(mrb);
-    data->tasks.erase(it);
-    return result;
-  }
-
-  /* Groonga::TaskExecutor#wait_all: {id => result, ...} */
+  /* Groonga::TaskExecutor#wait_all {|results| ...}: {id => result, ...}
+   *
+   * Waits all tasks and returns results of succeeded tasks. Results
+   * of failed tasks aren't included.
+   *
+   * If a block is given, it's called with the results before an
+   * error is raised. So the caller can release resources such as
+   * temporary tables created by succeeded tasks even when one of
+   * tasks is failed. */
   mrb_value
   task_executor_wait_all(mrb_state *mrb, mrb_value self)
   {
+    mrb_value block;
+    mrb_get_args(mrb, "&", &block);
+
     auto data = task_executor_data(mrb, self);
     data->executor->wait_all();
     report_task_errors(data);
@@ -494,15 +491,25 @@ namespace {
     auto results =
       mrb_hash_new_capa(mrb, static_cast<mrb_int>(data->task_ids.size()));
     for (const auto id : data->task_ids) {
+      auto it = data->tasks.find(id);
+      if (it == data->tasks.end()) {
+        continue;
+      }
+      if (it->second->rc != GRN_SUCCESS) {
+        continue;
+      }
       auto arena_index = mrb_gc_arena_save(mrb);
       mrb_hash_set(mrb,
                    results,
                    mrb_int_value(mrb, static_cast<mrb_int>(id)),
-                   take_result(mrb, data, id));
+                   it->second->result.to_mrb(mrb));
       mrb_gc_arena_restore(mrb, arena_index);
     }
     data->task_ids.clear();
     data->tasks.clear();
+    if (!mrb_nil_p(block)) {
+      mrb_yield(mrb, block, results);
+    }
     grn_mrb_ctx_check(mrb);
     return results;
   }
@@ -541,6 +548,6 @@ grn_mrb_task_executor_init(grn_ctx *ctx)
                     klass,
                     "wait_all",
                     task_executor_wait_all,
-                    MRB_ARGS_NONE());
+                    MRB_ARGS_BLOCK());
 }
 #endif

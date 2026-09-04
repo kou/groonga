@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788490295707,
+  "lastUpdate": 1788496255405,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -36720,6 +36720,108 @@ window.BENCHMARK_DATA = {
             "value": 0.013643112000011115,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0015909999999998148 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "078a9f6ff271104b000ac3bba2c7ae5baf9985c5",
+          "message": "mrb: add Groonga::TaskExecutor#execute\n\n`Groonga::TaskExecutor#execute(id, tag, *arguments, &block)` evaluates\nthe given block in a child `grn_ctx` as a `grn::TaskExecutor` task.\n`#wait_all` waits all tasks and returns `{id => result, ...}`.\n\nEach `grn_ctx` has its own `mrb_state` and mruby isn't thread safe. So\nnothing in the caller's `mrb_state` is shared with the child's\n`mrb_state`:\n\n  * The block is serialized to bytecode by `mrb_dump_irep()` in the\n    caller's `mrb_state` and deserialized by `mrb_load_irep_buf_cxt()`\n    in the child's `mrb_state`. The block is evaluated at the top\n    level of the child's `mrb_state` without its environment. So local\n    variables outside the block are `nil` in the block and lexical\n    scopes such as enclosing modules aren't reproduced. Constants must\n    be fully qualified. `require` can be used in the block.\n  * Arguments and the result of the block are copied via\n    `grn::mrb::DetachedValue`. Only nil, true, false, Integer, Float,\n    Symbol, String, Array and Hash can be used. Temporary Groonga\n    objects can be passed by ID because temporary objects created in\n    a child `grn_ctx` are registered to the root `grn_ctx`.\n\nA worker thread pulls a child `grn_ctx`, evaluates the block in it and\nreleases the child `grn_ctx`. So the number of child `grn_ctx`s that\nare used at the same time doesn't exceed the number of workers. An\nerror in a task is propagated to the caller's `grn_ctx` by\n`grn_ctx_release_child()` and raised by `#wait_all`.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-09-04T12:31:00+09:00",
+          "tree_id": "66b6f15bae726f7adae951abdc426572db361c43",
+          "url": "https://github.com/kou/groonga/commit/078a9f6ff271104b000ac3bba2c7ae5baf9985c5"
+        },
+        "date": 1788496254199,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.3793064259999994,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008703999999999934 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2513356959999271,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006607000000000154 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.013134852999968416,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00042199999999992244 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.014551323000006278,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.000896999999999884 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.959027108999976,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00018000000000016614 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.2240180699998291,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006698000000000093 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.12517433700003266,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005786999999999917 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.01439390200005164,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014979999999999716 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.015684522000015022,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014160000000003337 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.051694667000106165,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006620999999999974 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06251691399990023,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007552000000000586 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.018784587000027386,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0020449999999998664 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.01891780800002607,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017610000000001236 s\nthreads: undefined"
           }
         ]
       }

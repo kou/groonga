@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788496255405,
+  "lastUpdate": 1788501137508,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -36822,6 +36822,108 @@ window.BENCHMARK_DATA = {
             "value": 0.01891780800002607,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0017610000000001236 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "bfc22a7f85e0d635d0e1b2286dc1af7eb989be50",
+          "message": "mrb: add Groonga::TaskExecutor#execute\n\n`Groonga::TaskExecutor#execute(id, tag, *arguments, &block)` evaluates\nthe given block in a child `grn_ctx` as a `grn::TaskExecutor` task.\n`#wait_all` waits all tasks and returns `{id => result, ...}`.\n\nEach `grn_ctx` has its own `mrb_state` and mruby isn't thread safe. So\nnothing in the caller's `mrb_state` is shared with the child's\n`mrb_state`:\n\n  * The block is serialized to bytecode by `mrb_dump_irep()` in the\n    caller's `mrb_state` and deserialized by `mrb_load_irep_buf_cxt()`\n    in the child's `mrb_state`. The block is evaluated at the top\n    level of the child's `mrb_state` without its environment. So local\n    variables outside the block are `nil` in the block and lexical\n    scopes such as enclosing modules aren't reproduced. Constants must\n    be fully qualified. `require` can be used in the block.\n  * Arguments and the result of the block are copied via\n    `grn::mrb::DetachedValue`. Only nil, true, false, Integer, Float,\n    Symbol, String, Array and Hash can be used. Temporary Groonga\n    objects can be passed by ID because temporary objects created in\n    a child `grn_ctx` are registered to the root `grn_ctx`.\n\nA worker thread pulls a child `grn_ctx`, evaluates the block in it and\nreleases the child `grn_ctx`. So the number of child `grn_ctx`s that\nare used at the same time doesn't exceed the number of workers. An\nerror in a task is propagated to the caller's `grn_ctx` by\n`grn_ctx_release_child()` and raised by `#wait_all`.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-09-04T14:32:00+09:00",
+          "tree_id": "b32b6549cbcc808460a08cc1491e1640424c9e79",
+          "url": "https://github.com/kou/groonga/commit/bfc22a7f85e0d635d0e1b2286dc1af7eb989be50"
+        },
+        "date": 1788501136690,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.31632927300017855,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007632999999999959 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.22848672000009174,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0067070000000000185 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.011149337999881936,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003189999999999582 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.012274853000008079,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00033299999999969465 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.474331899000049,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.0004299999999999582 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.1858283770000071,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0052880000000001814 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.10505452199970478,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.004689999999999861 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.012366451999923811,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013139999999998153 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.016863359000126366,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0012830000000000341 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.04254623100007393,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005091999999999472 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.048759045999872797,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005080000000000098 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.016651263000198924,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016129999999999894 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.019560405999868635,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016379999999999034 s\nthreads: undefined"
           }
         ]
       }

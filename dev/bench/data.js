@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788509641120,
+  "lastUpdate": 1788511529304,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -37332,6 +37332,108 @@ window.BENCHMARK_DATA = {
             "value": 0.01604236299999684,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0014519999999998423 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "3404610f37852fd951ae53cc013e8003915d514d",
+          "message": "mrb: add Groonga::TaskExecutor#execute\n\n`Groonga::TaskExecutor#execute(id, tag, *arguments, &block)` evaluates\nthe given block in a child `grn_ctx` as a `grn::TaskExecutor` task.\n`#wait_all` waits all tasks and returns `{id => result, ...}`.\n\nEach `grn_ctx` has its own `mrb_state` and mruby isn't thread safe. So\nnothing in the caller's `mrb_state` is shared with the child's\n`mrb_state`:\n\n  * The block is serialized to bytecode by `mrb_dump_irep()` in the\n    caller's `mrb_state` and deserialized by `mrb_load_irep_buf_cxt()`\n    in the child's `mrb_state`. The block is evaluated at the top\n    level of the child's `mrb_state` without its environment. So local\n    variables outside the block are `nil` in the block and lexical\n    scopes such as enclosing modules aren't reproduced. Constants must\n    be fully qualified. `require` can be used in the block.\n  * Arguments and the result of the block are copied via\n    `grn::mrb::DetachedValue`. Only nil, true, false, Integer, Float,\n    Symbol, String, Array and Hash can be used. Temporary Groonga\n    objects can be passed by ID because temporary objects created in\n    a child `grn_ctx` are registered to the root `grn_ctx`.\n\nA worker thread pulls a child `grn_ctx`, evaluates the block in it and\nreleases the child `grn_ctx`. So the number of child `grn_ctx`s that\nare used at the same time doesn't exceed the number of workers. An\nerror in a task is propagated to the caller's `grn_ctx` by\n`grn_ctx_release_child()` and raised by `#wait_all`.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-09-04T17:04:21+09:00",
+          "tree_id": "6fe2b2fca31b0acdac752cfdbe001650b6c27956",
+          "url": "https://github.com/kou/groonga/commit/3404610f37852fd951ae53cc013e8003915d514d"
+        },
+        "date": 1788511527936,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.37290017899994155,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.017491000000000062 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.26778591200007895,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01196399999999978 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.015520921000018006,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003569999999999407 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.01603626900009658,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00041599999999983317 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.6379866780000043,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00021199999999996222 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.23520889000008083,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008284999999999987 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.13506538399997225,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007717999999999947 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.01798786199992719,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002012000000000125 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.01737116999998989,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017260000000001163 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06355297199996812,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007011000000000267 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06355759399997396,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007878000000000301 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.023088904000019284,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0023720000000002073 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.02546678799996016,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0022479999999998612 s\nthreads: undefined"
           }
         ]
       }

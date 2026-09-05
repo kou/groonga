@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788523679929,
+  "lastUpdate": 1788571267009,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -37638,6 +37638,108 @@ window.BENCHMARK_DATA = {
             "value": 0.02193503299997701,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.00179000000000068 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "8549f3a270746b6b61a2015626aa13bd14cb87b6",
+          "message": "expr: add grn_expr_set_query_log_tag_suffix()\n\n`filter(N)` in query log is logged as `PREFIXfilter(N)SUFFIX: CONDITION`\nnow. `grn_expr_set_query_log_tag_prefix()` already exists for the\nprefix. `grn_expr_set_query_log_tag_suffix()` is added for the suffix.\n\n`Groonga::Expression#query_log_tag_prefix`, `#query_log_tag_prefix=`,\n`#query_log_tag_suffix` and `#query_log_tag_suffix=` are also added to\nmruby bindings.\n\n`logical_select` uses the suffix to show which shard is filtered:\n\n    filter(2)[Logs_20170316]: Logs_20170316.price less 910\n\nIt's consistent with `select(2)[Logs_20170316]`. This is useful when\nshards are processed in parallel because query log entries of shards\nare logged in finished order.\n\n`Groonga::Sharding::ShardSelector` requires `shard_table_name:` for\nit. `post_filter` in `logical_select` also uses the suffix.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-09-05T10:11:52+09:00",
+          "tree_id": "b6680db44d8cbdd6ed47d5dabf7dc0f702360227",
+          "url": "https://github.com/kou/groonga/commit/8549f3a270746b6b61a2015626aa13bd14cb87b6"
+        },
+        "date": 1788571265613,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.35584960399978627,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01313999999999993 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2784357179999688,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.010256999999999933 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.01496587000008276,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00042100000000008797 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.015294475000018792,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00045800000000006946 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.623131638000018,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00021500000000013175 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.2219707539996989,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007171000000000205 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.147528579000209,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005792999999999993 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.015733062999856884,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015909999999999258 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.017368787999998858,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0014949999999997743 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.05458695100003297,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00696100000000055 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.060950853000008465,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007500999999999869 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.021853069999906438,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002210000000000545 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.021869776999778878,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0018190000000005702 s\nthreads: undefined"
           }
         ]
       }

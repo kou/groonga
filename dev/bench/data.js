@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788703297472,
+  "lastUpdate": 1788737521498,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -38844,6 +38844,144 @@ window.BENCHMARK_DATA = {
             "value": 0.531661735999819,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0027580000000106963 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "1fe86ed0641952dd539254590dd87d6e7b8a070f",
+          "message": "sharding logical_select: process drilldowns in parallel (#2913)\n\nPlain drilldown keys and independent labeled drilldowns are processed in\nparallel with `Groonga::TaskExecutor` when `--n_workers` is 2 or more. A\nlabeled drilldown that depends on another drilldown by `table` is\nprocessed after the depended drilldown is finished.\n\n`Groonga::TaskExecutor` changes:\n\n* `parallel?(n_tasks=nil)` is added. It returns false when `n_tasks` is\n1 or less because there is nothing to parallelize.\n* An exception raised in a task uses the rc of its class when it's a\n`Groonga::GroongaError`. Other exceptions are command errors. This is\nthe same rule as `Groonga::Command#run_internal`. They were unknown\nerrors.\n\nQuery log changes:\n\n* `drilldown(N)` and `drilldowns[LABEL](N)` show their keys like\n`drilldown(N): KEYS`.\n* The filter operation of a drilldown filter shows its prefix like\n`drilldowns[LABEL].filter(N): CONDITION`.\n\nFixed bug:\n\n* A persistent column specified by `calc_target` was closed after\ngrouping. It's shared with other contexts. It caused a double free in\nparallel processing.\n\nTests use `#@sort-query-log-operations shard drilldown` because query\nlog operations of parallel drilldowns aren't ordered. It requires\ngrntest 1.8.7 or later.\n\nCo-authored-by: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-09-07T08:10:31+09:00",
+          "tree_id": "23fefa6244e16f65d1f1403d97f9f267fd258399",
+          "url": "https://github.com/kou/groonga/commit/1fe86ed0641952dd539254590dd87d6e7b8a070f"
+        },
+        "date": 1788737520185,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.403934855999978,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.02202200000000004 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2956884650001257,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.016792000000000057 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.016521540000098867,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003489999999999327 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.01999270199996772,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0005369999999997876 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.5196587599999702,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0008140000000007586 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5249607460001471,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0008060000000043033 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.5408073410000043,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00018800000000390726 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.23178983599996172,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006449999999999928 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.13725343600003725,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005267000000000174 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.017400942999870495,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016320000000000778 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.01761494999993829,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016719999999998958 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.5217728399998123,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0027630000000016253 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5276209399999061,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0027790000000038617 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.060030609999785156,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00604900000000036 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06132888000013281,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007744000000000056 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.025340096000036283,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0019119999999995252 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.029272943999899326,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0021029999999997717 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.5205205730001126,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0026599999999992185 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.5591672809999864,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0029480000000040585 s\nthreads: undefined"
           }
         ]
       }

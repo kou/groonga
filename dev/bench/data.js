@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1788743583569,
+  "lastUpdate": 1788835935754,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -39120,6 +39120,144 @@ window.BENCHMARK_DATA = {
             "value": 0.5406950750000306,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0029039999999902477 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "abe@clear-code.com",
+            "name": "Abe Tomoaki",
+            "username": "abetomo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "085d04a923a1c93f0e2238ffce6366e2388afa80",
+          "message": "logical_select: add `--shard[LABEL].table` (#2912)\n\n`logical_select` finds actual tables by \"{logical_table}_{yyyymm}\"\nnaming rule.\nYou can't use `logical_select` for actual tables that don't follow the\nnaming rule.\n\nThis adds `--shard[LABEL].table`. You can specify actual tables\nexplicitly by it:\n\n```\nlogical_select \\\n  --shard_key timestamp \\\n  --shard[1].table Logs_a \\\n  --shard[2].table Logs_b\n```",
+          "timestamp": "2026-09-07T18:26:39+09:00",
+          "tree_id": "da85b58cb75258a692b72af97c348a8e38c2ad7d",
+          "url": "https://github.com/kou/groonga/commit/085d04a923a1c93f0e2238ffce6366e2388afa80"
+        },
+        "date": 1788835934437,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.3788530580003453,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.017303000000000138 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.3058230290001802,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.018070000000000044 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.017235226000138937,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00043199999999997407 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.018079999999827123,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.000388000000000277 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.5442393970000694,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0009070000000006295 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5608445110000275,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0009030000000080918 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.8087045529999841,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00021800000000177233 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.23715182200021445,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.009282000000000193 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.14557966899985786,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008760000000000157 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.021035400000300797,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0025770000000001347 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.021037536999983786,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0023340000000000305 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.5342952030000561,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002939999999999998 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5618496860000732,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0031120000000127712 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.0660529739999447,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0071479999999993354 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.07037077300014971,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007913000000000309 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.026227234999851134,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0027220000000001965 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.024107372999878862,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00227899999999967 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.5260995590000448,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0028699999999955983 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.5394218819999423,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.003142000000008527 s\nthreads: undefined"
           }
         ]
       }

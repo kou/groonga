@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1789944958578,
+  "lastUpdate": 1789946777461,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -45606,6 +45606,144 @@ window.BENCHMARK_DATA = {
             "value": 0.4330961569997953,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.002534000000013137 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "29555871ff14ae11017b0f2deb4efac44337d656",
+          "message": "load: round a weight to BFloat16 once for a BFloat16 weight column\n\nA weight in JSON was casted to Float32 and then converted to\nBFloat16 by the column. It rounds the weight twice (double ->\nFloat32 -> BFloat16). It may be different from the directly rounded\nvalue (double -> BFloat16). For example, 1.003906251 is 1.0 by\ndouble -> Float32 -> BFloat16 but 1.0078125 by double -> BFloat16\nbecause 1.003906251 is a tie in Float32 but not in BFloat16.\n\nA weight is rounded to BFloat16 in load for a BFloat16 weight column.\nA BFloat16 value is exactly representable as Float32. So we can pass\nit as Float32 without changing grn_section and the vector API.\n\nCo-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>",
+          "timestamp": "2026-09-21T07:42:31+09:00",
+          "tree_id": "ae42dd46bbeec8900bdaee3fe9258976efc2b39b",
+          "url": "https://github.com/kou/groonga/commit/29555871ff14ae11017b0f2deb4efac44337d656"
+        },
+        "date": 1789946776063,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.38853423000000475,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.02160499999999997 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.26829382899995835,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.013656000000000001 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.015903240000000096,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0004129999999998857 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.015533680000032746,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0004089999999999927 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.5243447590000869,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0007209999999950867 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5324643290000495,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.000660000000008959 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.4055499190000091,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00018600000000190686 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.22276204199999938,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0053919999999998 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.12727599299989834,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.004767999999999828 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.0168706120001616,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001665999999999973 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.016627435999907902,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013779999999997405 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.5232429169999477,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0021249999999990443 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5423440329999494,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00262699999999938 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.060864202000061596,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007215999999999986 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06284717800008366,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006926000000000293 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.023114317000135998,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0021179999999996757 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.03252338200024951,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00527699999999981 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.5228080479997743,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0024529999999994834 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.5354719149999028,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002399000000005924 s\nthreads: undefined"
           }
         ]
       }

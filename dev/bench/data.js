@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790056632682,
+  "lastUpdate": 1790061058920,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -46986,6 +46986,144 @@ window.BENCHMARK_DATA = {
             "value": 0.5700886099999707,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0027870000000120854 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "319746b1d5978c7c9c62d323808044019c3fac7a",
+          "message": "WASI: build libgroonga.wasm that exports the C API (#2972)\n\nWASI doesn't support dynamic linking. So we build libgroonga as a\nWebAssembly module that exports the C API instead of a shared library. A\nuser of libgroonga.wasm calls the C API directly.\n\nGRN_API marks an exported function with the default visibility for WASI.\nAll other symbols are hidden by CMAKE_C_VISIBILITY_PRESET and\nCMAKE_CXX_VISIBILITY_PRESET. wasm-ld exports only the former with\n-Wl,--export-dynamic.\n\nThe wasi preset uses the toolchain file of wasi-sdk. wasi-sdk 33 or\nlater is required because it's the first version that provides the C++\nstandard library with C++ exceptions. The LLVM based toolchains in\nDebian and Ubuntu don't provide it. -fwasm-exceptions and -mllvm\n-wasm-use-legacy-eh=false are needed to use it.\n\ncurl is disabled because the toolchain file of wasi-sdk doesn't set\nCMAKE_SYSROOT. find_package(CURL) finds the libcurl of the host and adds\nits include directory.\n\nWe don't provide the groonga command for WASI yet.\n\nCo-authored-by: Claude Opus 5 (1M context) <noreply@anthropic.com>",
+          "timestamp": "2026-09-22T15:52:42+09:00",
+          "tree_id": "226170cc1216c9fcc85c7e51c84a441a5a3bdc56",
+          "url": "https://github.com/kou/groonga/commit/319746b1d5978c7c9c62d323808044019c3fac7a"
+        },
+        "date": 1790061057731,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.37864329100011673,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.017467000000000246 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2605823000001237,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.011101000000000055 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.01558040800011895,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00039900000000001046 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.016156304999753957,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0004990000000000272 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.5136256130001584,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0006789999999974594 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5285453989998814,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0006459999999910981 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.4642841290000206,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00019900000000000473 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.2340353720001076,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005572999999999884 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.12965540700020028,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0049819999999998615 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.015965046999895094,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015120000000000272 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.017171574000030887,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016719999999999652 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.516370500999983,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0023239999999977168 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5448202179999271,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002193000000002443 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06252117800011092,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005801999999999766 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.05930397500003437,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00664400000000015 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.024748354999815092,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017440000000003009 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.027424689000099534,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005192000000000113 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.5217577860000802,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002769999999996109 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.5298337280001988,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0022980000000154543 s\nthreads: undefined"
           }
         ]
       }

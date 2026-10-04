@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1790980641405,
+  "lastUpdate": 1791096664338,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -53748,6 +53748,144 @@ window.BENCHMARK_DATA = {
             "value": 0.44018996299996616,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.002499000000009244 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "76123582d79a55daa4b3bbe5dc455d8b7abbff0c",
+          "message": "db: fix the C4267 warnings for vector size (#3010)\n\n`GRN_WARN_CONVERSION=ON` enables C4267 with MSVC and it's treated as an\nerror with `GRN_ALLOW_WARNING=OFF`:\n\n```text\nlib\\db.c(2853): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data\nlib\\db.c(2971): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data\nlib\\db.c(8316): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data\nlib\\db.c(9973): warning C4267: '=': conversion from 'size_t' to 'uint32_t', possible loss of data\nlib\\db.c(11303): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data\nlib\\db.c(12745): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data\nlib\\db.c(14144): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data\nlib\\db.c(16962): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data\n```\n\nThe number of elements in a vector isn't limited such as\n`GRN_TABLE_MAX_KEY_SIZE`. So we use `size_t` for them instead of\ncasting.\n\nThe number of offsets in `del_hook()` is never larger than the number of\nhooks that is counted by `int`. `grn_hook::data_size` is `uint32_t`.\n\nCo-authored-by: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-10-03T10:43:31+09:00",
+          "tree_id": "d1b561824b3743fcbf0958f43d78c9c53ddc100f",
+          "url": "https://github.com/kou/groonga/commit/76123582d79a55daa4b3bbe5dc455d8b7abbff0c"
+        },
+        "date": 1791096662262,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.22874845900003038,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.010319999999999926 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.16186499100012952,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007344000000000087 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.009338308999986111,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00021299999999994934 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.009747397000069213,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00026199999999992896 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.3294468430000279,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0007009999999993966 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.3379310699998541,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0006189999999922091 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 0.9861496289998968,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.0001949999999993901 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.13047794400006296,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.003406000000000034 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.08187604400006876,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0031340000000000118 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.010773697000217908,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0011919999999999709 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.010287911999967037,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0009459999999998775 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.3239481059999889,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0019650000000012713 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.3335508209999034,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017570000000014518 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.03487288899998475,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005446000000000062 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.04319445899989205,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005084999999999784 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.013842788999909317,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013620000000000576 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.015361257000108708,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001314000000000315 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.326580571999898,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00276800000000732 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.365629351000166,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0025649999999977635 s\nthreads: undefined"
           }
         ]
       }

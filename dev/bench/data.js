@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1791183083273,
+  "lastUpdate": 1791187268963,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
@@ -54576,6 +54576,144 @@ window.BENCHMARK_DATA = {
             "value": 0.5637577530000044,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.003143999999996816 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "c9457c74e39a002263f9da8265e5c3f0a33203f9",
+          "message": "cmake openzl: update bundled OpenZL to 0.3.0\n\nOpenZL 0.3.0 bundles lz4 too. We also include lz4 into our OpenZL\narchive by `vendor/download.rb` like zstd. `openzl-deps.cmake` is\nmoved to `build-scripts/cmake/`.\n\nThe `openzl` target exposes include directories of its bundled\ndependencies such as `deps/lz4/lib/`. `deps/lz4/lib/xxhash.h` is an old\nxxHash and it shadows `xxhash.h` used by Groonga:\n\n```text\nlib/group.c:748:7: error: unknown type name ‘XXH128_hash_t’; did you mean ‘XXH32_hash_t’?\nlib/group.c:748:34: error: implicit declaration of function ‘XXH3_128bits’ [-Wimplicit-function-declaration]\n```\n\nWe use only OpenZL's include directories and link `openzl` without its\nusage requirements by `$<LINK_ONLY:openzl>`.\n\nOpenZL 0.3.0 uses xgboost for tools and CLI. It's downloaded by\n`ExternalProject_Add()` with git at configure time. So configure fails\nwithout git:\n\n```text\nCMake Error at /usr/share/cmake-4.2/Modules/ExternalProject/shared_internal_commands.cmake:928 (message):\n  error: could not find git for clone of xgboost_external\n```\n\nWe only need the OpenZL C library. So we disable C++ bindings, custom\nparsers, CLI, examples, tools and install rules.\n\nData compressed by OpenZL 0.3.0 can't be decompressed by OpenZL 0.1.0\nbecause we use `ZL_MAX_FORMAT_VERSION` (21 -> 27). Data compressed by\nOpenZL 0.1.0 can be decompressed by OpenZL 0.3.0.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-10-05T15:54:27+09:00",
+          "tree_id": "8d25fbd0bbb61c2cd5c3ccbdb9fa6704d1f221b8",
+          "url": "https://github.com/kou/groonga/commit/c9457c74e39a002263f9da8265e5c3f0a33203f9"
+        },
+        "date": 1791187267420,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.3924200010000618,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.021470999999999935 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.2802670759999728,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.01596200000000003 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.015021800999932111,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00038599999999988643 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.015195672999880117,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003329999999998612 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.5519241330000568,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0008350000000021396 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5706508250000297,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0008369999999959798 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.7320064409999532,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00018300000000004424 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.2309396050000032,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0068530000000000535 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.13361233600005562,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006129000000000107 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.017814077000025463,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0016279999999999628 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.008668386000067585,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0015230000000001631 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.5463169470000366,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002715999999995944 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.5603392669999039,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0029700000000003612 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.06250224799987336,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007086000000000356 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.06674715500014372,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008392999999999678 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.026556540000001405,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002544999999999825 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.03578197399997407,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.003460999999999853 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.5495483909999166,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.003186000000011624 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.5661073039999565,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0034700000000165154 s\nthreads: undefined"
           }
         ]
       }

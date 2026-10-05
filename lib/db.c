@@ -6755,7 +6755,7 @@ static grn_obj *
 grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
 {
   uint32_t vs = 0;
-  uint32_t size0;
+  size_t size0;
   void *vp = NULL;
   if (!value) {
     if (!(value = grn_obj_open(ctx, GRN_BULK, 0, 0))) {
@@ -6772,7 +6772,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
       GRN_UINT32_PUT(ctx, value, id);
       value->header.domain = GRN_DB_UINT32;
       vp = GRN_BULK_HEAD(value) + size0;
-      vs = GRN_BULK_VSIZE(value) - size0;
+      vs = (uint32_t)(GRN_BULK_VSIZE(value) - size0);
       break;
     case GRN_ACCESSOR_GET_KEY:
       if (!a->next && GRN_TABLE_IS_MULTI_KEYS_GROUPED(a->obj)) {
@@ -6784,7 +6784,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
           grn_vector_unpack(ctx,
                             value,
                             GRN_BULK_HEAD(&raw_vector),
-                            GRN_BULK_VSIZE(&raw_vector),
+                            (uint32_t)GRN_BULK_VSIZE(&raw_vector),
                             0,
                             NULL);
           GRN_OBJ_FIN(ctx, &raw_vector);
@@ -6795,7 +6795,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
         if (id) {
           grn_table_get_key2(ctx, a->obj, id, value);
           vp = GRN_BULK_HEAD(value) + size0;
-          vs = GRN_BULK_VSIZE(value) - size0;
+          vs = (uint32_t)(GRN_BULK_VSIZE(value) - size0);
         } else {
           vp = NULL;
           vs = 0;
@@ -6806,7 +6806,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
     case GRN_ACCESSOR_GET_VALUE:
       grn_obj_get_value(ctx, a->obj, id, value);
       vp = GRN_BULK_HEAD(value) + size0;
-      vs = GRN_BULK_VSIZE(value) - size0;
+      vs = (uint32_t)(GRN_BULK_VSIZE(value) - size0);
       break;
     case GRN_ACCESSOR_GET_SCORE:
       {
@@ -6915,7 +6915,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
               grn_vector_add_element(ctx,
                                      value,
                                      GRN_BULK_HEAD(&sub_value),
-                                     GRN_BULK_VSIZE(&sub_value),
+                                     (uint32_t)GRN_BULK_VSIZE(&sub_value),
                                      0,
                                      sub_value.header.domain);
             }
@@ -6927,7 +6927,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
       } else {
         grn_obj_get_value(ctx, a->obj, id, value);
         if (value->header.type == GRN_UVECTOR && a->next) {
-          int i, n;
+          size_t i, n;
           grn_id *sub_ids;
           grn_obj sub_records;
           grn_obj sub_value;
@@ -6956,7 +6956,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
               grn_vector_add_element(ctx,
                                      value,
                                      GRN_BULK_HEAD(&sub_value),
-                                     GRN_BULK_VSIZE(&sub_value),
+                                     (uint32_t)GRN_BULK_VSIZE(&sub_value),
                                      0,
                                      sub_value.header.domain);
             }
@@ -6966,7 +6966,7 @@ grn_accessor_get_value(grn_ctx *ctx, grn_accessor *a, grn_id id, grn_obj *value)
           return value;
         } else {
           vp = GRN_BULK_HEAD(value) + size0;
-          vs = GRN_BULK_VSIZE(value) - size0;
+          vs = (uint32_t)(GRN_BULK_VSIZE(value) - size0);
         }
       }
       break;
@@ -7180,9 +7180,9 @@ grn_obj_size(grn_ctx *ctx, grn_obj *obj)
   case GRN_UVECTOR:
   case GRN_PVECTOR:
   case GRN_MSG:
-    return GRN_BULK_VSIZE(obj);
+    return (uint32_t)GRN_BULK_VSIZE(obj);
   case GRN_VECTOR:
-    return obj->u.v.body ? GRN_BULK_VSIZE(obj->u.v.body) : 0;
+    return obj->u.v.body ? (uint32_t)GRN_BULK_VSIZE(obj->u.v.body) : 0;
   default:
     return 0;
   }
@@ -7397,7 +7397,7 @@ grn_obj_set_value_column_var_size(
                             ja,
                             id,
                             GRN_BULK_HEAD(casted_value),
-                            GRN_BULK_VSIZE(casted_value),
+                            (uint32_t)GRN_BULK_VSIZE(casted_value),
                             flags,
                             NULL);
           } else {
@@ -7428,12 +7428,13 @@ grn_obj_set_value_column_fix_size(
   if (!value_) {
     goto exit;
   }
-  uint32_t value_size = GRN_BULK_VSIZE(value_);
+  size_t value_size = GRN_BULK_VSIZE(value_);
   uint32_t element_size = ((grn_ra *)obj)->header->element_size;
   if (value_size > element_size) {
     GRN_DEFINE_NAME(obj);
     ERR(GRN_INVALID_ARGUMENT,
-        "[column][fix][set-value][%.*s] too long value: <%u>: max:<%u>",
+        "[column][fix][set-value][%.*s] too long value: <%" GRN_FMT_SIZE
+        ">: max:<%u>",
         name_size,
         name,
         value_size,

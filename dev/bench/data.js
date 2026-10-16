@@ -1,110 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792160263829,
+  "lastUpdate": 1792162590752,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
-      {
-        "commit": {
-          "author": {
-            "email": "kou@clear-code.com",
-            "name": "Sutou Kouhei",
-            "username": "kou"
-          },
-          "committer": {
-            "email": "noreply@github.com",
-            "name": "GitHub",
-            "username": "web-flow"
-          },
-          "distinct": true,
-          "id": "3e178bd207da5dba4f255465d4ca2dc021af9093",
-          "message": "Add ShortBinary/Binary/LargeBinary (#2554)\n\nThis is an experimental feature.\n\n* `load`, `dump` and `select --output_columns` are only supported.\n* Apache Arrow input isn't tested. It may not work.\n  * We need to improve grntest for Apache Arrow input with binary value.\n* MessagePack output isn't tested. It may not work.\n* XML output isn't tested. It may not work.\n* TSV output isn't tested. It may not work.\n* Use base64 in JSON.\n* Use base64 in grn_inspect().\n* Use Apache Arrow's base64 implementation as fallback.",
-          "timestamp": "2025-10-06T09:26:50+09:00",
-          "tree_id": "ab1a4d760399e5dbc33b75540092e0b7928aa903",
-          "url": "https://github.com/kou/groonga/commit/3e178bd207da5dba4f255465d4ca2dc021af9093"
-        },
-        "date": 1759716312511,
-        "tool": "googlecpp",
-        "benches": [
-          {
-            "name": "stdio: json|json: load/data/multiple",
-            "value": 0.36070720899977005,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.016457999999999945 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: load/data/short_text",
-            "value": 0.2712442210000745,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.01498899999999967 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: select/olap/multiple",
-            "value": 0.01624894800011134,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.00045099999999975715 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: select/olap/n_workers/multiple",
-            "value": 0.024550314999828515,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.00039900000000045455 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
-            "value": 1.5842278960000158,
-            "unit": "s/iter",
-            "extra": "iterations: 1\ncpu: 0.00016400000000016401 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: load/data/multiple",
-            "value": 0.23865993199990498,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.007197000000000203 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: load/data/short_text",
-            "value": 0.13347297499990418,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.006185999999999997 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: select/olap/multiple",
-            "value": 0.01691867099987121,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0015120000000001521 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: select/olap/n_workers/multiple",
-            "value": 0.018169118999935563,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.001603000000000021 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
-            "value": 0.06402200599984553,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.006668000000000118 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
-            "value": 0.06971772899987627,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.006698999999999011 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
-            "value": 0.01749072300003718,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0014480000000002546 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
-            "value": 0.01741316899983758,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0016790000000003191 s\nthreads: undefined"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -55788,6 +55686,144 @@ window.BENCHMARK_DATA = {
             "value": 0.5733927259999518,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.002986999999999629 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "fb60e2cb52122e39f990edce89aa71011c255bf4",
+          "message": "WASI: open a database by a relative path in groonga.mjs\n\n`groonga.mjs` opened a database by an absolute path because WASI\ndoesn't have the current directory. So paths in outputs such as\n`column_list` were absolute paths such as `/.../db/db.0000101` unlike\nthe groonga command that uses `db/db.0000101`.\n\nwasi-libc emulates the current directory in WebAssembly. It doesn't\nchange the current directory of Node.js. We export `chdir()` from\n`libgroonga.wasm` and use it to change the current directory of\n`libgroonga.wasm`. We can open a database by a relative path like the\ngroonga command.\n\nWe can run more tests with WASI: `column_list`, `dump`, `object_warm`\nand `table_list`.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-10-16T23:35:27+09:00",
+          "tree_id": "a27421cfab3b2f3924d661c345b058bb9a3e2250",
+          "url": "https://github.com/kou/groonga/commit/fb60e2cb52122e39f990edce89aa71011c255bf4"
+        },
+        "date": 1792162588355,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.28596157100005826,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.011015000000000205 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.21840232700003526,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.008607999999999963 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.011992339000016727,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00032000000000000084 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.012223538999990069,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003379999999999772 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.4270629730000053,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0007020000000004245 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.4441313040000523,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0007029999999937919 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.1618316699999696,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00015599999999843517 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.1737778099999332,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005126000000000103 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.11608245299998998,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.004297000000000023 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.012736246999963896,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0012350000000001249 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.013302761000090868,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0012600000000000389 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.43176271299995506,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002587000000000339 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.44582353300006616,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002601999999999549 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.046254139999859945,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005686000000000052 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.05086263800006918,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00606000000000001 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.017235251000045082,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00139000000000003 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.01725286999999298,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0013090000000000046 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.43195939500003533,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0025839999999999197 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.47257825200000525,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0025480000000133174 s\nthreads: undefined"
           }
         ]
       }

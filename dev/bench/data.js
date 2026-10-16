@@ -1,110 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1792025016681,
+  "lastUpdate": 1792155847238,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
-      {
-        "commit": {
-          "author": {
-            "email": "kou@clear-code.com",
-            "name": "Sutou Kouhei",
-            "username": "kou"
-          },
-          "committer": {
-            "email": "kou@clear-code.com",
-            "name": "Sutou Kouhei",
-            "username": "kou"
-          },
-          "distinct": true,
-          "id": "1d5614108c89d00ad268a04cb2bd77aaa1779551",
-          "message": "Add ShortBinary/Binary/LargeBinary\n\nThis is an experimental feature.\n\n* `load`, `dump` and `select --output_columns` are only supported.\n* Apache Arrow input isn't tested. It may not work.\n  * We need to improve grntest for Apache Arrow input with binary\n    value.\n* MessagePack output isn't tested. It may not work.\n* XML output isn't tested. It may not work.\n* TSV output isn't tested. It may not work.\n* Use base64 in JSON.\n* Use base64 in grn_inspect().\n* Use Apache Arrow's base64 implementation as fallback.",
-          "timestamp": "2025-10-05T10:49:51+09:00",
-          "tree_id": "0822b39c8c3529cc89d67fd1550b60c80b94c8c3",
-          "url": "https://github.com/kou/groonga/commit/1d5614108c89d00ad268a04cb2bd77aaa1779551"
-        },
-        "date": 1759629990536,
-        "tool": "googlecpp",
-        "benches": [
-          {
-            "name": "stdio: json|json: load/data/multiple",
-            "value": 0.3818396240000652,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.020366999999999885 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: load/data/short_text",
-            "value": 0.26691532699999243,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.013857000000000064 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: select/olap/multiple",
-            "value": 0.016028773000016372,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.00038299999999993894 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: select/olap/n_workers/multiple",
-            "value": 0.024576758999955928,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0003959999999996189 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
-            "value": 1.4380544729999656,
-            "unit": "s/iter",
-            "extra": "iterations: 1\ncpu: 0.00034700000000009723 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: load/data/multiple",
-            "value": 0.2368310220000467,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.006025000000000155 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: load/data/short_text",
-            "value": 0.13447712700002512,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.007423999999999903 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: select/olap/multiple",
-            "value": 0.016545712000038293,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0013469999999999316 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: select/olap/n_workers/multiple",
-            "value": 0.016568172000006598,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0017309999999999826 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
-            "value": 0.06414803000006941,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.006690000000000168 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
-            "value": 0.07082520100004785,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.007303000000000726 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
-            "value": 0.018130815999995775,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0016359999999996933 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
-            "value": 0.017604701999914596,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0014820000000000388 s\nthreads: undefined"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -55716,6 +55614,144 @@ window.BENCHMARK_DATA = {
             "value": 0.570847424999954,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0029220000000167445 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "16f539c7fa9e3a78c1c659fd0fe0e064a19d91f2",
+          "message": "WASI: link plugins statically\n\nWASI doesn't support dynamic linking. So we couldn't use plugins such\nas `functions/string` and `token_filters/stop_word` with WASI.\n\nThis links all plugins to libgroonga statically when `GRN_EMBED` is\nenabled. `GRN_EMBED` is enabled by default for WASI. CMake generates\n`grn_embedded_plugins` table from `lib/embedded_plugins.c.in`.\n`grn_plugin_open()` and `grn_plugin_find_path()` resolve a plugin name\nsuch as `functions/string` by the table before they use the dynamic\nlinker.\n\nWe don't support `GRN_EMBED` with autotools. `configure` generates an\nempty table.\n\nA database stores a plugin path with its suffix such as\n`functions/string.so`. The table ignores the suffix. So we can share a\ndatabase between builds with and without `GRN_EMBED`.\n\nEach plugin uses `GRN_PLUGIN_FUNCTION_TAG` to use unique names for its\n`GRN_PLUGIN_INIT()`/`GRN_PLUGIN_REGISTER()`/`GRN_PLUGIN_FIN()`.\n`functions/index_column` used the same tag as `functions/time`. This\nfixes it.\n\nA plugin links to libgroonga and libgroonga links to all embedded\nplugins. CMake can handle this dependency cycle because they're static\nlibraries. But libgroonga is an executable for WASI. So a plugin uses\n`grn_plugin_dependencies` that has only the usage requirements of\nlibgroonga for WASI.\n\n`GRN_EMBED` is used by Mroonga. It embedded only `tokenizers/mecab`\nbefore. It embeds all plugins now. So Mroonga can use\n`plugin_register functions/vector` and so on without plugin files.\n\nWe can run more tests with WASI: `column_create`, `plugin_register`,\n`plugin_unregister`, `query_expand`, `table_create_similar`,\n`table_tokenize`, `token_filters` and `truncate`.\n\n`column_create/index/source/multi_column/offline_parallel` is too slow\nwith WASI because WASI doesn't support threads. We omit it with WASI.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-10-16T21:55:14+09:00",
+          "tree_id": "38005644b60906b1806fc8d6d7d691f188fda9eb",
+          "url": "https://github.com/kou/groonga/commit/16f539c7fa9e3a78c1c659fd0fe0e064a19d91f2"
+        },
+        "date": 1792155845187,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.21257780699994555,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.009407000000000013 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.15744030700011535,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00687599999999991 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.0094853250000142,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0003189999999999582 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.009553207999886126,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0002619999999997624 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.3141837590000023,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0004450000000009169 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.331146902999933,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0007359999999974609 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 1.2364127089999783,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00015299999999968117 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.12943261499987102,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005727999999999955 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.07613288800007467,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.004228999999999983 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.010112166999988403,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0012070000000001524 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.0100087700000131,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0010599999999999221 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.3240310819999763,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0027699999999996616 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.3397433330000581,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0028240000000037124 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.03994889799992052,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007189999999999766 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.0446492389999662,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.007238000000000008 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.01604826700003059,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001868000000000175 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.0185351809998906,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0020469999999998267 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.31530798199992205,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002325000000013233 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.39224791499998446,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002326999999997137 s\nthreads: undefined"
           }
         ]
       }

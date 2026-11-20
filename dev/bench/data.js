@@ -1,110 +1,8 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1795187675112,
+  "lastUpdate": 1795188557922,
   "repoUrl": "https://github.com/kou/groonga",
   "entries": {
     "Benchmark": [
-      {
-        "commit": {
-          "author": {
-            "email": "kou@clear-code.com",
-            "name": "Sutou Kouhei",
-            "username": "kou"
-          },
-          "committer": {
-            "email": "kou@clear-code.com",
-            "name": "Sutou Kouhei",
-            "username": "kou"
-          },
-          "distinct": true,
-          "id": "2e62dd9de72d95ae5f087f4e60337df443b8ff45",
-          "message": "memory-map: add a new mmap() abstraction layer\n\nI wanted to reuse the existing mmap() abstraction layer in `lib/io.c`\nbut it was difficult to extract...\n\nThis is still a naive implementation. The Windows part isn't tested,\noffset isn't forced to align with page size and so on... We'll improve\nthem later.",
-          "timestamp": "2025-10-21T09:47:18+09:00",
-          "tree_id": "f27a833a0e3aee67a554100ae3ba6624f7dfef9b",
-          "url": "https://github.com/kou/groonga/commit/2e62dd9de72d95ae5f087f4e60337df443b8ff45"
-        },
-        "date": 1761008962286,
-        "tool": "googlecpp",
-        "benches": [
-          {
-            "name": "stdio: json|json: load/data/multiple",
-            "value": 0.3532282319999922,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.016833000000000237 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: load/data/short_text",
-            "value": 0.26474019599982057,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.012840000000000129 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: select/olap/multiple",
-            "value": 0.0155260049999697,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0003630000000000022 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: select/olap/n_workers/multiple",
-            "value": 0.024396785999954318,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0004029999999994871 s\nthreads: undefined"
-          },
-          {
-            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
-            "value": 1.4618601920000174,
-            "unit": "s/iter",
-            "extra": "iterations: 1\ncpu: 0.00019700000000016926 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: load/data/multiple",
-            "value": 0.2290244619999271,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.005904999999999966 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: load/data/short_text",
-            "value": 0.13846191200002522,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.00649699999999967 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: select/olap/multiple",
-            "value": 0.016675693000081537,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0013559999999994687 s\nthreads: undefined"
-          },
-          {
-            "name": "http: json|json: select/olap/n_workers/multiple",
-            "value": 0.016505694000045423,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.001417000000000057 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
-            "value": 0.06159620900001528,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0061579999999999 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
-            "value": 0.0699815520000584,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.006800000000000167 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
-            "value": 0.01779479200001788,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0015519999999999146 s\nthreads: undefined"
-          },
-          {
-            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
-            "value": 0.01759744899999305,
-            "unit": "s/iter",
-            "extra": "iterations: 5\ncpu: 0.0016170000000000628 s\nthreads: undefined"
-          }
-        ]
-      },
       {
         "commit": {
           "author": {
@@ -56940,6 +56838,144 @@ window.BENCHMARK_DATA = {
             "value": 0.4055632990000504,
             "unit": "s/iter",
             "extra": "iterations: 5\ncpu: 0.0015259999999951424 s\nthreads: undefined"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "committer": {
+            "email": "kou@clear-code.com",
+            "name": "Sutou Kouhei",
+            "username": "kou"
+          },
+          "distinct": true,
+          "id": "c0e85f6f02c0786836ace77900749360c049ddef",
+          "message": "io: introduce file operations table\n\n`grn_io` used platform specific static functions for file operations\nsuch as `grn_fileinfo_open()`, `grn_mmap()` and `grn_pread()`. They\nwere selected by `#ifdef` and some callers also had `#ifdef` for\nplatform specific behaviors: `fdatasync()` on Linux, writing back the\nlock and referenced mappings with the `mmap()` emulation on WASI.\n\nThis introduces `grn_io_file_operations` that has all of them. Each\nplatform defines its operations: Windows, WASI and POSIX. Callers\nuse the operations returned by `grn_io_get_file_operations()`. Platform\nspecific behaviors are expressed by optional operations (`discard`,\n`sync_file` and `sync_lock`) and `sync_referenced_map`.\n\nThis doesn't change behavior. This is a preparation for selecting the\n`mmap()` emulation on POSIX and using an external implementation.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>",
+          "timestamp": "2026-11-20T23:40:42+09:00",
+          "tree_id": "f42b0d656825e9ef3b099a1430cfaad3dee1629d",
+          "url": "https://github.com/kou/groonga/commit/c0e85f6f02c0786836ace77900749360c049ddef"
+        },
+        "date": 1795188556095,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "stdio: json|json: load/data/multiple",
+            "value": 0.18312680599996156,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.006115999999999976 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: load/data/short_text",
+            "value": 0.1401062009999805,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005212999999999912 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/multiple",
+            "value": 0.008351579999981595,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0002829999999999916 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: select/olap/n_workers/multiple",
+            "value": 0.00782155199999579,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.00022099999999995734 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/filter",
+            "value": 0.29228375999997525,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0006009999999982141 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.31044833300001073,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0004409999999995251 s\nthreads: undefined"
+          },
+          {
+            "name": "stdio: json|json: wal_recover/db/auto_recovery/column/index",
+            "value": 0.9058296830000074,
+            "unit": "s/iter",
+            "extra": "iterations: 1\ncpu: 0.00020699999999856944 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/multiple",
+            "value": 0.12124980700002652,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.004383999999999902 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: load/data/short_text",
+            "value": 0.07319541900002946,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0029849999999997934 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/multiple",
+            "value": 0.009107696000000942,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0009020000000000694 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: select/olap/n_workers/multiple",
+            "value": 0.00951268700001151,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0017459999999999837 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/filter",
+            "value": 0.2959991559999935,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002331000000003164 s\nthreads: undefined"
+          },
+          {
+            "name": "http: json|json: sharding/logical_select/n_workers/filter",
+            "value": 0.3169186540000055,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.001898999999998735 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/multiple",
+            "value": 0.035488521999980094,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005404999999999563 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: load/data/short_text",
+            "value": 0.03516974899994807,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.005114999999999981 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/multiple",
+            "value": 0.013230058999994299,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0011940000000000145 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: select/olap/n_workers/multiple",
+            "value": 0.013341077999967865,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0011329999999998286 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/filter",
+            "value": 0.3150300600000264,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.002207000000004622 s\nthreads: undefined"
+          },
+          {
+            "name": "http: apache-arrow|apache-arrow: sharding/logical_select/n_workers/filter",
+            "value": 0.33371714300005806,
+            "unit": "s/iter",
+            "extra": "iterations: 5\ncpu: 0.0030130000000014867 s\nthreads: undefined"
           }
         ]
       }
